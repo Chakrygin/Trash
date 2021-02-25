@@ -5,17 +5,29 @@ using StackExchange.Redis;
 
 namespace RedisApp
 {
-    class Program
+    public static class Program
     {
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var redis = await ConnectionMultiplexer.ConnectAsync("localhost");
+            using var redis = await ConnectionMultiplexer.ConnectAsync("localhost,allowAdmin=true");
 
-            var database = redis.GetDatabase();
+            foreach (var endPoint in redis.GetEndPoints())
+            {
+                var server = redis.GetServer(endPoint);
+                
+                await server.ConfigSetAsync("notify-keyspace-events", "AKE");
+            }
+            
+            var subscriber = redis.GetSubscriber();
 
-            var result = await database.lock("Foo:Bar:Baz");
+            var channel = await subscriber.SubscribeAsync("*");
 
-            Console.WriteLine("Result: " + result);
+            while (true)
+            {
+                var message = await channel.ReadAsync();
+
+                Console.WriteLine($"{message.Channel}: {message.Message}");
+            }
         }
     }
 }
