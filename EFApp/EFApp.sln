@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFApp", "EFApp\EFApp.csproj", "{BAF49928-18AB-4182-B0AA-0E05E7A58BC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{13B5AB21-D9DF-4861-BF52-BADC1EB61280}"
+ProjectSection(SolutionItems) = preProject
+	scripts\migrations.cmd = scripts\migrations.cmd
+	scripts\postgres.cmd = scripts\postgres.cmd
+	scripts\sqlserver.cmd = scripts\sqlserver.cmd
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAF49928-18AB-4182-B0AA-0E05E7A58BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF49928-18AB-4182-B0AA-0E05E7A58BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF49928-18AB-4182-B0AA-0E05E7A58BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF49928-18AB-4182-B0AA-0E05E7A58BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
