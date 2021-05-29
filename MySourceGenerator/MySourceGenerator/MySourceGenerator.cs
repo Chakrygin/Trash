@@ -62,7 +62,7 @@ namespace {typeGroup.Key.ContainingNamespace.Name}
                         sb.AppendLine(
                             $@"            System.IServiceProvider serviceProvider)");
                         sb.AppendLine(
-                            $@"            {{");
+                            $@"        {{");
 
                         foreach (var property in typeGroup)
                         {
@@ -85,11 +85,13 @@ namespace {typeGroup.Key.ContainingNamespace.Name}
         {
             context.AddSource("DependencyAttribute", $@"
 using System;
+using System.Diagnostics;
 
 namespace {context.Compilation.AssemblyName}
 {{
+    [Conditional(""NEVER"")]
     [AttributeUsage(Targets, Inherited = false, AllowMultiple = false)]
-    public sealed class DependencyAttribute : Attribute
+    internal sealed class DependencyAttribute : Attribute
     {{
         private const AttributeTargets Targets =
             AttributeTargets.Field | AttributeTargets.Property;
